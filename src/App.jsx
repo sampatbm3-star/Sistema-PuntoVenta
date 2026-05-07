@@ -1,15 +1,22 @@
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import { GlobalStyles,Routers,Sidebar } from "./index"
 import { Device } from "./styles/breakpoints"
+import { useThemeStore } from "./store/ThemeStore";
+import { useState } from "react";
 
 function App() {
+  const [sidebarOpen,setSidebarOpen] = useState(true)
+  const {themeStyle} = useThemeStore()
   return (
-    <Container>
+  <ThemeProvider theme={themeStyle}>
+      <Container>
       <GlobalStyles />
-      <section className="contentSidebar"><Sidebar/></section>
+      <section className="contentSidebar"><Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/></section>
       <section className="contentRouters"><Routers/></section>
       <section className="contentMenu">Menu</section>
     </Container>
+  </ThemeProvider>
+    
   )
 }
 
@@ -26,15 +33,12 @@ const Container = styled.main`
 
   .contentSidebar {
     display: none;
-    background-color: rgba(78, 45, 78, 0.5);
   }
   .contentMenu {
     grid-area: menu;
-    background-color: rgba(53, 219, 11, 0.5);
   }
   .contentRouters {
     grid-area: routers;
-    background-color: rgba(231, 13, 136, 0.5);
   }
 
   /* TABLET (>=768px): sidebar de iconos a la izquierda */

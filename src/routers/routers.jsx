@@ -1,12 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import {Home} from '../index'
+import { Routes, Route } from 'react-router-dom'
+import { Home } from '../index'
 
-export function Routers(){
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-            </Routes>
-        </BrowserRouter>
-    )
+export function Routers() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  )
 }
