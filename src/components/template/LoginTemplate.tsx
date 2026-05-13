@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import { Title, InputText2, Btnsave, Linea, Footer } from "../../index"; // Importamos ambos
+import { Title, InputText2, Btnsave, Linea, Footer, useAuthStore } from "../../index"; // Importamos ambos
 import { v } from "../../styles/variables";
 
+
+
 export function LoginTemplate() {
+  const { loginGoogle } = useAuthStore();
+  
   return (
     <Container>
       <section className="ContentCard">
@@ -34,7 +38,7 @@ export function LoginTemplate() {
             <span>0</span>
           </Linea>
           <div className="googleBtnContainer">
-            <Btnsave titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>}/>
+            <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>}/>
           </div>
         </div>
       </section>
@@ -92,7 +96,10 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         gap: 14px;
-
+        .form__field:focus{
+          outline: none;
+          border-color: #11A6FF;
+        }
         .btnContainer {
           display: flex;
           justify-content: center;
