@@ -5,11 +5,11 @@ import { useThemeStore } from "./store/ThemeStore";
 import { useState } from "react";
 
 function App() {
-  const [sidebarOpen,setSidebarOpen] = useState(true)
+  const [sidebarOpen,setSidebarOpen] = useState(false)
   const {themeStyle} = useThemeStore()
   return (
   <ThemeProvider theme={themeStyle}>
-      <Container>
+      <Container className={sidebarOpen ? "active" : ""}>
       <GlobalStyles />
       <section className="contentSidebar"><Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/></section>
       <section className="contentRouters"><Routers/></section>
@@ -44,6 +44,9 @@ const Container = styled.main`
   /* TABLET (>=768px): sidebar de iconos a la izquierda */
   @media ${Device.tablet} {
     grid-template-columns: 88px 1fr;
+    &.active {
+      grid-template-columns: 260px 1fr;
+    }
     grid-template-rows: 1fr;
     grid-template-areas: "sidebar routers";
 
