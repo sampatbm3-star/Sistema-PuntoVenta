@@ -11,8 +11,12 @@ function App() {
   <ThemeProvider theme={themeStyle}>
       <Container className={sidebarOpen ? "active" : ""}>
       <GlobalStyles />
-      <section className="contentSidebar"><Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/></section>
-      <section className="contentRouters"><Routers/></section>
+      <section className="contentSidebar">
+        <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/>
+      </section>
+      <section className="contentRouters">
+        <Routers/>
+      </section>
       <section className="contentMenu">Menu</section>
     </Container>
   </ThemeProvider>

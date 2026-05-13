@@ -1,5 +1,4 @@
 export * from './App';
-export * from './main';
 export * from './pages/Home';
 export * from './pages/Login';
 export * from './store/AuthStore';

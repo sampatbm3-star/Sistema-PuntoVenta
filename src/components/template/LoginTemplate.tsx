@@ -38,7 +38,7 @@ export function LoginTemplate() {
             <span>0</span>
           </Linea>
           <div className="googleBtnContainer">
-            <Btnsave funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>}/>
+            <Btnsave color="0,0,0" funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>}/>
           </div>
         </div>
       </section>

@@ -1,12 +1,18 @@
 import styled from "styled-components";
+import React from "react";
 
-export function InputText2({ children }) {
+interface InputText2Props {
+  children: React.ReactNode;
+}
+
+export function InputText2({ children }: InputText2Props) {
   return (
     <Container>
       <div className="form__group field">{children}</div>
     </Container>
   );
 }
+
 const Container = styled.div`
   position: relative;
   display: flex;
