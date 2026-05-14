@@ -110,7 +110,7 @@ const Container = styled.div`
 
       .googleBtnContainer {
         display: flex;
-        justify-content: center;
+        justify-content: center; 
         width: 100%;
 
         /* Hacemos que el botón de Google ocupe un ancho fijo y centrado */

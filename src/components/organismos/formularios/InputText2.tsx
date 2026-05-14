@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 
 interface InputText2Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function InputText2({ children }: InputText2Props) {

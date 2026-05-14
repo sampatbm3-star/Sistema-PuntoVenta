@@ -9,7 +9,12 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 
-export function Sidebar({ state, setState }) {
+interface SidebarProps {
+  $isopen: string;
+}
+
+export function Sidebar({ state, setState }: { state: boolean; setState: (val: boolean) => void }) {
+
  
   return (
     <Main $isopen={state.toString()}>
@@ -80,7 +85,8 @@ export function Sidebar({ state, setState }) {
     </Main>
   );
 }
-const Container = styled.div`
+const Container = styled.div<SidebarProps>`
+
   background: ${({ theme }) => theme.bgtotal};
   color: ${(props) => props.theme.text};
   position: fixed;
@@ -192,7 +198,8 @@ const Container = styled.div`
     }
   }
 `;
-const Main = styled.div`
+const Main = styled.div<SidebarProps>`
+
   .Sidebarbutton {
     position: fixed;
     top: 70px;

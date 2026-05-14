@@ -3,12 +3,14 @@ import { GlobalStyles,Routers,Sidebar } from "./index"
 import { Device } from "./styles/breakpoints"
 import { useThemeStore } from "./store/ThemeStore";
 import { useState } from "react";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   const [sidebarOpen,setSidebarOpen] = useState(false)
   const {themeStyle} = useThemeStore()
   return (
   <ThemeProvider theme={themeStyle}>
+    <AuthContextProvider>
       <Container className={sidebarOpen ? "active" : ""}>
       <GlobalStyles />
       <section className="contentSidebar">
@@ -19,6 +21,7 @@ function App() {
       </section>
       <section className="contentMenu">Menu</section>
     </Container>
+    </AuthContextProvider>
   </ThemeProvider>
     
   )

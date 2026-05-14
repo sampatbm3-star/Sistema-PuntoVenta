@@ -16,10 +16,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     // Escuchamos los cambios de sesión (login/logout)
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        if (session == null) {
+        console.log("evento", event);
+        console.log("session", session);
+        if (session?.user == null) {
           setUser(null);
         } else {
-          setUser(session.user);
+          setUser(session?.user);
         }
         console.log("Evento de Auth:", event);
       }
