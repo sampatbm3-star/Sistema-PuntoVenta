@@ -26,12 +26,13 @@ export function Footer() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrar todo horizontalmente */
+  align-items: center;
   font-size: 13.8px;
   color: #91a4b7;
-  gap: 8px;
+  gap: 12px;
   width: 100%;
-  text-align: center; /* Centrar texto */
+  text-align: center;
+  padding: 0 20px; /* Margen lateral para móviles */
 
   .lock {
     border-bottom: 2px solid rgba(145, 164, 183, 0.2);
@@ -39,14 +40,34 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 5px;
-    width: fit-content;
+    padding-bottom: 8px;
+    width: 100%;
+    max-width: 1000px; /* Suficiente para una sola línea en laptop */
+    
+    @media (max-width: 900px) {
+      max-width: 500px; /* Se rompe en 2 líneas en pantallas medianas/chicas */
+    }
+    
+    span {
+      line-height: 1.4;
+    }
   }
 
   .derechos {
     display: flex;
-    justify-content: center; /* Centrar los derechos */
-    gap: 30px; /* Espacio entre los textos */
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap; /* Forzamos una sola línea para los créditos */
+    
+    @media (max-width: 900px) {
+      gap: 10px;
+      font-size: 11px; /* Un poco más chico en móvil para que quepa en una línea */
+    }
+    
+    @media (max-width: 480px) {
+      gap: 5px;
+      font-size: 10px;
+    }
     
     .separador {
       width: 1px;
@@ -57,6 +78,7 @@ const Container = styled.div`
     
     span {
       margin-top: 0;
+      white-space: nowrap;
     }
   }
 `;

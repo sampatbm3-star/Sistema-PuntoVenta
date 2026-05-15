@@ -42,7 +42,8 @@ const Container = styled.div`
     padding: 12px;
     background: inherit;
     transition: border-color 0.2s;
-    width: 94%;
+    width: 100%;
+    box-sizing: border-box; /* Asegurar que el padding no expanda el ancho */
     &.disabled {
       color: #696969;
       background: #2d2d2d;

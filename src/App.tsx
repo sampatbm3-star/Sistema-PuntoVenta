@@ -1,9 +1,7 @@
 import styled, {ThemeProvider} from "styled-components";
-import { GlobalStyles,Routers,Sidebar,Login } from "./index"
+import { GlobalStyles,Routers,Sidebar,Login, AuthContextProvider, useThemeStore } from "./index"
 import { Device } from "./styles/breakpoints"
-import { useThemeStore } from "./store/ThemeStore";
 import { useState } from "react";
-import { AuthContextProvider } from "./context/AuthContext";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -24,12 +22,9 @@ function App() {
       </section>
       <section className="contentMenu">Menu</section>
     </Container>):(<Login />)
-          
       }
-      
     </AuthContextProvider>
-  </ThemeProvider>
-    
+  </ThemeProvider>    
   )
 }
 
