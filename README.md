@@ -55,23 +55,23 @@ Abre tu navegador en: **http://localhost:5173**
 Sistema-PuntoVenta/
 ├── src/
 │   ├── components/
-│   │   ├── organismos/
+│   │   ├── Organismos/
 │   │   │   └── sidebar/
-│   │   │       └── Sidebar.jsx
-│   │   └── template/
-│   │       └── HomeTemplate.jsx
+│   │   │       └── Sidebar.tsx
+│   │   └── Template/
+│   │       └── HomeTemplate.tsx
 │   ├── pages/
-│   │   └── Home.jsx
+│   │   └── Home.tsx
 │   ├── routers/
-│   │   └── routers.jsx
+│   │   └── Routers.tsx
 │   ├── styles/
-│   │   ├── GlobalStyles.jsx
-│   │   └── breakpoints.jsx
-│   ├── index.js
-│   ├── App.jsx
-│   └── main.jsx
+│   │   ├── GlobalStyles.tsx
+│   │   └── breakpoints.ts
+│   ├── index.tsx
+│   ├── App.tsx
+│   └── main.tsx
 ├── index.html
-├── package.json      ← equivalente al requirements.txt
+├── package.json      
 └── README.md
 ```
 
