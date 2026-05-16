@@ -1,9 +1,16 @@
 import styled from "styled-components";
-import { Title, InputText2, Btnsave, Linea, Footer, useAuthStore } from "../../index"; // Importamos ambos
+import { Title, InputText2, Btnsave, Linea, Footer, useAuthStore, useEmpresaStore } from "../../index"; // Importamos ambos
 import { v } from "../../styles/variables";
 
 export function LoginTemplate() {
   const { loginGoogle } = useAuthStore();
+  const { insertarEmpresa } = useEmpresaStore();
+  const insertar = async () => {
+    const p = {
+      nombre: "Sucursal de Migh"
+    }
+    await insertarEmpresa(p, null);
+  }
   
   return (
     <Container>
@@ -29,15 +36,29 @@ export function LoginTemplate() {
               />
             </InputText2>
             <div className="btnContainer">
-              <Btnsave titulo='INGRESAR' bgcolor='#11A6FF' width='100%'/>
+              <Btnsave titulo='INGRESAR' bgcolor='#11A6FF' width='100%' funcion={insertar}/>
             </div>
           </form>
           <Linea>
             <span>0</span>
           </Linea>
           <div className="googleBtnContainer">
-            <Btnsave color="0,0,0" funcion={loginGoogle} titulo="Google" bgcolor="#fff" icono={<v.iconogoogle/>}/>
+            <Btnsave 
+              color="0,0,0" 
+              funcion={loginGoogle} 
+              titulo="Google" 
+              bgcolor="#fff" 
+              icono={<v.iconogoogle/>}
+            />
+            <Btnsave 
+              titulo="Nueva Empresa" 
+              funcion={insertar} 
+              width="100%"
+              bgcolor="#fff" 
+              color="0,0,0"
+            />
           </div>
+
         </div>
       </section>
       <Footer/>
