@@ -1,5 +1,4 @@
 export * from './App';
-export * from './main';
 export * from './hooks/ProtectedRoute';
 export * from './context/AuthContext';
 export * from './pages/Home';

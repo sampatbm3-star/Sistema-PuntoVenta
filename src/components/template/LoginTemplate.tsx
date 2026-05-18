@@ -1,24 +1,17 @@
 import styled from "styled-components";
-import { Title, InputText2, Btnsave, Linea, Footer, useAuthStore, useEmpresaStore } from "../../index"; // Importamos ambos
+import { Title, InputText2, Btnsave, Linea, Footer, useAuthStore } from "../../index"; // Importamos ambos
 import { v } from "../../styles/variables";
 
 export function LoginTemplate() {
   const { loginGoogle } = useAuthStore();
-  const { insertarEmpresa } = useEmpresaStore();
-  const insertar = async () => {
-    const p = {
-      nombre: "Sucursal de Migh"
-    }
-    await insertarEmpresa(p, null);
-  }
-  
+
   return (
     <Container>
       <section className="ContentCard">
         <div className="card">
           <div className="tituloContainer">
             <img src={v.logo} className="logoTitle" alt="logo" />
-            <Title>Ingresar</Title>
+            <Title>INICIAR SESIÓN</Title>
           </div>
           <form>
             <InputText2>
@@ -36,7 +29,7 @@ export function LoginTemplate() {
               />
             </InputText2>
             <div className="btnContainer">
-              <Btnsave titulo='INGRESAR' bgcolor='#11A6FF' width='100%' funcion={insertar}/>
+              <Btnsave titulo='INGRESAR' bgcolor='#11A6FF' width='100%' funcion={() => {}}/>
             </div>
           </form>
           <Linea>
@@ -49,13 +42,6 @@ export function LoginTemplate() {
               titulo="Google" 
               bgcolor="#fff" 
               icono={<v.iconogoogle/>}
-            />
-            <Btnsave 
-              titulo="Nueva Empresa" 
-              funcion={insertar} 
-              width="100%"
-              bgcolor="#fff" 
-              color="0,0,0"
             />
           </div>
 

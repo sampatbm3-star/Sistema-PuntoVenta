@@ -1,5 +1,7 @@
 import { createContext, useEffect, useContext, useState, ReactNode } from "react";
 import { supabase } from "../supabase/supabase.config";
+import { MostrarUsuarios } from "../supabase/crudUsuarios";
+import { InsertarEmpresa } from "../supabase/crudEmpresa";
 
 // 1. Definimos la forma del contexto
 interface AuthContextType {
@@ -25,7 +27,13 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     // 2. Escuchar cambios (Login, Logout, Token refrescado)
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        setUser(session?.user ?? null);
+        if (session?.user) {
+          setUser(session.user);
+          console.log("session del user", session.user.id);
+          insertarDatos(session.user.id);
+        } else {
+          setUser(null);
+        }
         setLoading(false);
       }
     );
@@ -34,6 +42,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       authListener.subscription.unsubscribe();
     };
   }, []);
+
+const insertarDatos = async (id_auth:string)=>{
+  const response = await MostrarUsuarios({id_auth: id_auth})
+  if (response) {
+    
+  }
+  else{
+    await InsertarEmpresa({nombre:"Generica"})
+  }
+}
 
   return (
     <AuthContext.Provider value={{ user }}>

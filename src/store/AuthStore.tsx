@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { supabase } from "../supabase/supabase.config";
+import { supabase, MostrarUsuarios } from "../index";
 
 // 1. Definimos la forma de nuestra "Store"
 interface AuthState {
@@ -15,6 +15,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     await supabase.auth.signInWithOAuth({
       provider: "google",
     });
+    
   },
   cerrarSesion: async () => {
     await supabase.auth.signOut();

@@ -4,7 +4,7 @@ import { supabase } from "../index";
 const tabla = "empresa";
 
 
-export async function InsertarEmpresa(p: any, file: File | null){
+export async function InsertarEmpresa(p: any = {}){
 
     const {error,data} = await supabase.from
     (tabla).insert(p).select().maybeSingle();
