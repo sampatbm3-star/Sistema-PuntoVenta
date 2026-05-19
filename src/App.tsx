@@ -1,15 +1,30 @@
-import styled from "styled-components";
-import { GlobalStyles,Routers,Sidebar } from "./index"
+import styled, {ThemeProvider} from "styled-components";
+import { GlobalStyles,Routers,Sidebar,Login, AuthContextProvider, useThemeStore } from "./index"
 import { Device } from "./styles/breakpoints"
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function App() {
+  const [sidebarOpen,setSidebarOpen] = useState(false)
+  const {themeStyle} = useThemeStore()
+  const {pathname} = useLocation();
   return (
-    <Container>
+  <ThemeProvider theme={themeStyle}>
+    <AuthContextProvider>
+      {
+        pathname != "/login" ?(<Container className={sidebarOpen ? "active" : ""}>
       <GlobalStyles />
-      <section className="contentSidebar"><Sidebar/></section>
-      <section className="contentRouters"><Routers/></section>
+      <section className="contentSidebar">
+        <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}/>
+      </section>
+      <section className="contentRouters">
+        <Routers/>
+      </section>
       <section className="contentMenu">Menu</section>
-    </Container>
+    </Container>):(<Login />)
+      }
+    </AuthContextProvider>
+  </ThemeProvider>    
   )
 }
 
@@ -26,20 +41,20 @@ const Container = styled.main`
 
   .contentSidebar {
     display: none;
-    background-color: rgba(78, 45, 78, 0.5);
   }
   .contentMenu {
     grid-area: menu;
-    background-color: rgba(53, 219, 11, 0.5);
   }
   .contentRouters {
     grid-area: routers;
-    background-color: rgba(231, 13, 136, 0.5);
   }
 
   /* TABLET (>=768px): sidebar de iconos a la izquierda */
   @media ${Device.tablet} {
     grid-template-columns: 88px 1fr;
+    &.active {
+      grid-template-columns: 260px 1fr;
+    }
     grid-template-rows: 1fr;
     grid-template-areas: "sidebar routers";
 
